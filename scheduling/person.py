@@ -31,11 +31,13 @@ class Person:
                     windows.append(tw)
 
         for i in range(1, len(self.busy_windows)):
-            curr = self.busy_windows[i].merge(desired_window)
-            prev = self.busy_windows[i - 1].merge(desired_window)
+            curr = self.busy_windows[i]
+            prev = self.busy_windows[i - 1]
+
             if prev.get_start() > desired_window.get_end():
                 break
-            tw = prev.gap_between(curr)
+
+            tw = prev.gap_between(curr).merge(desired_window)
             if tw.get_duration() >= min_duration:
                 windows.append(tw)
 
