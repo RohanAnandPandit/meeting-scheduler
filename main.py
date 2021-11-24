@@ -16,8 +16,11 @@ def get_time_window(s):
     return tw.TimeWindow(start, end)
 
 
-def load_people():
-    df = pd.read_csv('calendar.csv')
+def load_people(filename):
+    """
+    Get schedule data from CSV file
+    """
+    df = pd.read_csv(filename)
     df.head()
     windows = {}
     for index, (person, start, end) in df.iterrows():
@@ -34,7 +37,7 @@ def load_people():
 
 
 if __name__ == "__main__":
-    people = load_people()
+    people = load_people('calendar.csv')
 
     while True:
         desired_window = get_time_window(input('Please enter time window to search in:\n'))

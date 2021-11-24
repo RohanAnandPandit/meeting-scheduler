@@ -9,6 +9,13 @@ class Person:
         self.busy_windows = sorted(windows, key=lambda window: window.get_start())
 
     def free_windows(self, desired_window, min_duration):
+        """
+        List of person's free time slots in the desired window having required duration
+        :param desired_window: The time window in which we want to find a free slot
+        :param people: A list of Person objects
+        :param duration: Duration in seconds
+        :return: list of TimeWindow objects
+        """
         windows = []
         if self.busy_windows:
             first = self.busy_windows[0]

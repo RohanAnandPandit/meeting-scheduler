@@ -38,6 +38,11 @@ class TimeWindow:
         return TimeWindow(self.end, time_window.get_start())
 
     def merge(self, time_window):
+        """
+        Find the overlapping time window
+        :param time_window: TimeWindow object to merge with
+        :return: TimeWindow object
+        """
         start = max(self.start, time_window.get_start())
         end = min(self.end, time_window.get_end())
         return TimeWindow(start, end)
