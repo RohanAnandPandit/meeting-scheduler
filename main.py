@@ -42,6 +42,10 @@ if __name__ == "__main__":
     while True:
         desired_window = get_time_window(input('Please enter time window to search in:\n'))
         duration = int(input('Please enter the desired meeting min_duration (in seconds):\n'))
+        if desired_window.get_duration() < duration:
+            print('The desired window is not long enough for the given duration')
+            continue
+
         meeting_window = Scheduler.schedule(desired_window, people, duration)
 
         if meeting_window:
